@@ -1,0 +1,11 @@
+version: "3.0"
+services:
+
+  armybuilder-mongodb:
+    image: mongo:3.4.7
+    container_name: armybuilder-mongodb
+    ports:
+      - "27017:27017"
+    expose:
+      - "27017"
+    command: mongod --smallfiles --logpath=/dev/null # --quiet

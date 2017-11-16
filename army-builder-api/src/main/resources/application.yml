@@ -1,0 +1,12 @@
+server:
+  port: 8080
+
+# JWT Auth
+auth:
+  secret: changeit
+  expires: 604800
+  header: Authorization
+
+security:
+  basic:
+    enabled: false

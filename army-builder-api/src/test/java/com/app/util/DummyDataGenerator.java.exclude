@@ -1,0 +1,33 @@
+package com.app.util;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import com.app.security.domain.Role;
+import com.app.security.domain.User;
+
+public class DummyDataGenerator {
+
+//	public static List<User> getUsers(int amount, int idStarsFrom) {
+//		List<User> users = new ArrayList<>();
+//		for (int i = idStarsFrom; i < amount + idStarsFrom; i++) {
+//			//@formatter:off
+//			User.builder()
+//				.name("generated-" + i)
+//				.email(String.format("generated-%d@gmail.com", i))
+//				.password("password-" + i)
+//				.roles(Arrays.asList(Role.USER))
+//				.build();
+//			//@formatter:on
+//			users.get(i - idStarsFrom).setId((long) i);
+//		}
+//
+//		return users;
+//	}
+
+	public static List<User> getUsers(int amount) {
+		return getUsers(amount, 1);
+	}
+
+}
