@@ -1,0 +1,11 @@
+**/.project
+**/.classpath
+**/.settings
+**/.idea
+**/.gradle
+
+army-builder-api/build
+army-builder-api/bin
+
+army-builder/node_modules
+army-builder/dist
