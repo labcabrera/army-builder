@@ -12,6 +12,9 @@ import java.util.Arrays;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.lab.armybuilder.repository.UserRepository;
+import org.lab.armybuilder.security.domain.Role;
+import org.lab.armybuilder.security.domain.User;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -21,9 +24,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import com.app.BaseTest;
-import com.app.repository.UserRepository;
-import com.app.security.domain.Role;
-import com.app.security.domain.User;
 
 public class JwtUserDetailsServiceTest extends BaseTest {
 

@@ -18,6 +18,9 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     console.log("HomeComponent: ngOnInit()");
     let userId = this.authService.getUserId();
+    if(!userId) {
+      this.router.navigate(['/register']);  
+    }
     console.log("HomeComponent: userId: " + userId);
   }
 
