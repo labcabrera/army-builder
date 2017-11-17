@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router'
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-top-menu',
@@ -10,7 +10,7 @@ export class AppTopMenuComponent implements OnInit {
 
   constructor(
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit() {
   }
@@ -20,7 +20,7 @@ export class AppTopMenuComponent implements OnInit {
   }
 
   logout() {
-    console.log("AppTopMenuComponent: logout()");
+    console.log('AppTopMenuComponent: logout()');
   }
 
 }

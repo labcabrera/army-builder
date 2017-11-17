@@ -139,7 +139,7 @@ export class AuthService {
   * @return token if exists
   */
   public getToken(): string {
-    console.log("Reading token " + this.token);
+    console.log('AuthService: reading token ' + this.token);
     return this.token;
   }
 
@@ -148,7 +148,7 @@ export class AuthService {
     const response = res.json() && res.json().token;
     if (response) {
       const token = response;
-      let claims = this.getTokenClaims(token);
+      const claims = this.getTokenClaims(token);
       claims.token = token;
       sessionStorage.setItem('user', JSON.stringify(claims));
     } else {
@@ -172,10 +172,10 @@ export class AuthService {
 
   // Generates Headers
   private generateOptions(): RequestOptions {
-    let headers = new Headers();
-    headers.append("Content-Type", 'application/json');
-    headers.append("Access-Control-Allow-Origin", "*");
-    headers.append("Access-Control-Allow-Headers", "Origin, Authorization, Content-Type");
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Headers', 'Origin, Authorization, Content-Type');
     return new RequestOptions({headers: headers});
   }
 
