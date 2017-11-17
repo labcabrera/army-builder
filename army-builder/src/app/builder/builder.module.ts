@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
 import {
   MatToolbarModule,
@@ -9,10 +9,11 @@ import {
   MatSelectModule
 } from '@angular/material';
 
-import { AppComponentsModule } from '../app-components/components.module';
-import { BuilderRoutingModule } from './builder-routing.module';
+import {ArmyDomainService} from '../services/api/army-domain.service';
+import {AppComponentsModule} from '../app-components/components.module';
+import {BuilderRoutingModule} from './builder-routing.module';
 
-import { BuilderComponent } from './builder/builder.component';
+import {BuilderComponent} from './builder/builder.component';
 
 @NgModule({
   imports: [
@@ -28,6 +29,9 @@ import { BuilderComponent } from './builder/builder.component';
   ],
   declarations: [
     BuilderComponent
+  ],
+  providers: [
+    ArmyDomainService
   ]
 })
-export class BuilderModule { }
+export class BuilderModule {}

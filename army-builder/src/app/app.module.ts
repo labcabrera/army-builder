@@ -1,12 +1,14 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
 
-import { AppComponentsModule } from './app-components/components.module';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {AppComponentsModule} from './app-components/components.module';
+import {AuthService} from './services/auth/auth.service';
+import {TokenInterceptor} from './services/auth/token-interceptor';
 
 @NgModule({
   declarations: [
@@ -20,9 +22,15 @@ import { AppComponentsModule } from './app-components/components.module';
     AppComponentsModule
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
+    AuthService
   ],
   bootstrap: [
     AppComponent
   ]
 })
-export class AppModule { }
+export class AppModule {}

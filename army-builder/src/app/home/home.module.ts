@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { HttpModule } from '@angular/http';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {HttpModule} from '@angular/http';
 
 import {
   MatToolbarModule,
@@ -9,12 +9,9 @@ import {
   MatIconModule
 } from '@angular/material';
 
-import { HomeRoutingModule } from './home-routing.module';
-import { AppComponentsModule } from '../app-components/components.module';
-
-import { AuthService } from '../services/auth/auth.service';
-
-import { HomeComponent } from './home/home.component';
+import {HomeRoutingModule} from './home-routing.module';
+import {AppComponentsModule} from '../app-components/components.module';
+import {HomeComponent} from './home/home.component';
 
 @NgModule({
   imports: [
@@ -33,7 +30,6 @@ import { HomeComponent } from './home/home.component';
     HomeComponent
   ],
   providers: [
-    AuthService
   ]
 })
-export class HomeModule { }
+export class HomeModule {}

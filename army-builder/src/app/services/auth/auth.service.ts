@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
 import {
   Http,
@@ -7,11 +7,11 @@ import {
   Response
 } from '@angular/http';
 
-import { Observable } from 'rxjs/Rx';
+import {Observable} from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-import { environment } from '../../../environments/environment';
+import {environment} from '../../../environments/environment';
 
 /**
 * AuthService uses JSON-Web-Token authorization strategy.
@@ -20,14 +20,15 @@ import { environment } from '../../../environments/environment';
 @Injectable()
 export class AuthService {
 
+  public static readonly SIGNUP_URL = environment.apiUrl + '/api/auth/signup';
+  public static readonly SIGNIN_URL = environment.apiUrl + '/api/auth/signin';
+  public static readonly REFRESH_TOKEN_URL = environment.apiUrl + '/api/auth/token/refresh';
+
   private token: string;
   private username: string;
   private userId: string;
-  
-  public static readonly SIGNUP_URL = environment.apiUrl + "/api/auth/signup";
-  public static readonly SIGNIN_URL = environment.apiUrl + "/api/auth/signin";
-  public static readonly REFRESH_TOKEN_URL = environment.apiUrl + "/api/auth/token/refresh";
-  
+
+
   constructor(private http: Http) {
     this.refreshUserData();
   }
@@ -37,7 +38,8 @@ export class AuthService {
   */
   public refreshUserData(): void {
     const user = sessionStorage.getItem('user');
-    if(user) {
+    if (user) {
+      console.log(user);
       this.saveUserDetails(JSON.parse(user));
     }
   }
@@ -101,11 +103,11 @@ export class AuthService {
   * @param token - which should be refreshed
   */
   public refreshToken(token: string): Observable<void | {}> {
-    const requestParam = { token: this.token };
+    const requestParam = {token: this.token};
 
     return this.http.post(AuthService.REFRESH_TOKEN_URL, requestParam, this.generateOptions())
       .map((res: Response) => {
-         this.saveToken(res);
+        this.saveToken(res);
       }).catch(err => {
         throw Error(err.json().message);
       });
@@ -137,6 +139,7 @@ export class AuthService {
   * @return token if exists
   */
   public getToken(): string {
+    console.log("Reading token " + this.token);
     return this.token;
   }
 
@@ -173,7 +176,7 @@ export class AuthService {
     headers.append("Content-Type", 'application/json');
     headers.append("Access-Control-Allow-Origin", "*");
     headers.append("Access-Control-Allow-Headers", "Origin, Authorization, Content-Type");
-    return new RequestOptions({ headers: headers });
+    return new RequestOptions({headers: headers});
   }
 
 }

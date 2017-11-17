@@ -2,10 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
 import { CommonModule } from '@angular/common';
-
-import { AuthService } from '../services/auth/auth.service';
 
 import {
   MatToolbarModule,
@@ -16,6 +13,7 @@ import {
   MatCardModule
 } from '@angular/material';
 
+import { AuthService } from '../services/auth/auth.service';
 import { RegisterRoutingModule } from './register-routing.module';
 import { RegisterComponent } from './register/register.component';
 
