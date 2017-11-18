@@ -1,6 +1,15 @@
 server:
   port: 8080
 
+logging:
+  level.org: INFO
+
+security:
+  keystore:
+    file: lab-insurance.jks
+    password: changeit
+    alias: lab-insurance
+
 # JWT Auth
 auth:
   secret: changeit

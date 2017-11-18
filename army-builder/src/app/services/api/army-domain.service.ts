@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Headers, Http} from '@angular/http';
+import {Headers, Http, RequestOptions} from '@angular/http';
 
 import {ArmyDomain} from '../../model/amy-domain.model';
 import {AuthService} from '../auth/auth.service';
@@ -19,7 +19,15 @@ export class ArmyDomainService {
   ) {}
 
   getAll(): Promise<ArmyDomain[]> {
-    return this.http.get(this.url)
+    const headers = new Headers();
+    const requestOptions = new RequestOptions({headers: headers});
+
+    console.log('token: ' + this.authService.getToken());
+
+    headers.append('Authorization', this.authService.getToken());
+    headers.append('Content-Type', 'application/json');
+
+    return this.http.get(this.url, requestOptions)
       .toPromise()
       .then(response => response.json().data as ArmyDomain[])
       .catch(this.handleError);

@@ -159,13 +159,13 @@ public class AuthController {
 	public ResponseEntity<?> getAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest)
 		throws AuthenticationException {
 
-		final String name = authenticationRequest.getUsername();
+		final String email = authenticationRequest.getUsername();
 		final String password = authenticationRequest.getPassword();
-		log.info("[POST] GETTING TOKEN FOR User " + name);
+		log.info("[POST] GETTING TOKEN FOR User " + email);
 		JwtUser userDetails;
 
 		try {
-			userDetails = (JwtUser) userDetailsService.loadUserByUsername(name);
+			userDetails = (JwtUser) userDetailsService.loadUserByUsername(email);
 			// } catch (UsernameNotFoundException | NoResultException ex) {
 			// log.error(ex.getMessage());
 			// throw new UserNotFoundException();
@@ -180,7 +180,7 @@ public class AuthController {
 		}
 
 		final Authentication authentication = authenticationManager
-			.authenticate(new UsernamePasswordAuthenticationToken(name, password));
+			.authenticate(new UsernamePasswordAuthenticationToken(email, password));
 
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 		final String token = jwtUtil.generateToken(userDetails);

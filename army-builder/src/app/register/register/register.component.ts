@@ -30,6 +30,16 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
 
+  login() {
+    const email = this.emailFormControl.value;
+    const password = this.passwordFormControl.value;
+    const result = this.authService.signIn(email, password);
+    result.subscribe(
+      response => this.loginSuccess(response),
+      error => this.processError(error)
+    );
+  }
+
   register() {
     console.log('AuthService: register()');
     this.finished = false;
@@ -38,9 +48,14 @@ export class RegisterComponent implements OnInit {
     const result = this.authService.signUp(email, email, password);
     result.subscribe(
       response => this.processRegisterSuccess(response),
-      error => this.processRegisterError(error),
+      error => this.processError(error),
       () => this.finished = true
     );
+  }
+
+  loginSuccess(data: any) {
+    console.log('RegisterComponent loginSuccess');
+    this.router.navigate(['/']);
   }
 
   processRegisterSuccess(data: any) {
@@ -48,7 +63,7 @@ export class RegisterComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
-  processRegisterError(error: any) {
+  processError(error: any) {
     console.log('processRegisteError() ' + error);
   }
 }

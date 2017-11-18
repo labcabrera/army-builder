@@ -66,7 +66,16 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 				.and()
 			.authorizeRequests()
-				.antMatchers(HttpMethod.GET, "/", "/**/*.html", "/**/*.{png,jpg,jpeg,svg.ico}", "/**/*.css", "/**/*.js")
+				.antMatchers(HttpMethod.GET,
+						"/",
+						"/**/*.html",
+						"/**/*.{png,jpg,jpeg,svg.ico}",
+						"/**/*.css",
+						"/**/*.js",
+						// springfox
+						"/swagger-resources",
+						"/swagger-resources/configuration/ui",
+						"/v2/api-docs")
 					.permitAll()
 				.antMatchers("/api/auth/**")
 					.permitAll()

@@ -10,7 +10,8 @@ import {
   MatMenuModule,
   MatIconModule,
   MatInputModule,
-  MatCardModule
+  MatCardModule,
+  MatGridListModule
 } from '@angular/material';
 
 import { AuthService } from '../services/auth/auth.service';
@@ -31,6 +32,7 @@ import { RegisterComponent } from './register/register.component';
     MatIconModule,
     MatInputModule,
     MatCardModule,
+    MatGridListModule,
 
     RegisterRoutingModule
   ],

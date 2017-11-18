@@ -30,6 +30,7 @@ export class AuthService {
 
 
   constructor(private http: Http) {
+    console.log('New authservice!!!');
     this.refreshUserData();
   }
 
@@ -151,6 +152,7 @@ export class AuthService {
       const claims = this.getTokenClaims(token);
       claims.token = token;
       sessionStorage.setItem('user', JSON.stringify(claims));
+      sessionStorage.setItem('token', response);
     } else {
       throw Error(res.json());
     }
